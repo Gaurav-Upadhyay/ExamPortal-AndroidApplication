@@ -1,0 +1,115 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 2;
+var answers = new Array(5);
+answers[0] = "0";
+answers[1] = "at the same time as the lighter object.";
+answers[2] = "none of the above";
+answers[3] = "br";
+answers[4] = "60m/s";
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1.What is the accelaration of a car that maintains a constant velocity of 100km/hr for 10 seconds?<br></b>
+<blockquote>
+<input type="radio" name="q1" value="0">0<br>
+<input type="radio" name="q1" value="10km/hr">10km/hr<br>
+
+</blockquote>
+<p><b>
+2. A heavy object and a light object are dropped at the same time from rest in a vacuum. The heavier object reaches the ground<br></b>
+<blockquote>
+<input type="radio" name="q2" value="sooner than the lighter object">sooner than the lighter object<br>
+<input type="radio" name="q2" value="at the same time as the lighter object.">at the same time as the lighter object.<br>
+
+</blockquote>
+<p><b>
+3. While a car travels around a circular track at constant speed its<br></b>
+<blockquote>
+<input type="radio" name="q3" value="accelaration is zero">accelaration is zero<br>
+<input type="radio" name="q3" value="none of the above">accelaration is non-zero<br>
+</blockquote>
+<p><b>
+4. A ball is thrown upwards and caught when it comes back down. Neglection air resistance, its speed when caught is<br></b>
+<blockquote>
+<input type="radio" name="q4" value="lb">more than the speed it had when thrown upwards<br>
+<input type="radio" name="q4" value="br">the same as the speed it had when thrown upwards<br>
+</blockquote>
+<p><b>
+<p>
+<b>5. At one instant an object in free fallis moving downward at 50 meters per second.One second later its speed is about<br></b>
+<blockquote>
+<input type="radio" name="q5" value="60m/s">60m/s<br>
+<input type="radio" name="q5" value="100m/s">100m/s<br>
+</blockquote>
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

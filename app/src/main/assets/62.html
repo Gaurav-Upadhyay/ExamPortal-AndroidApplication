@@ -1,0 +1,130 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 3;
+var answers = new Array(5);
+answers[0] = "Structured Querry Language";
+answers[1] = "Data mining";
+answers[2] = "normalization";
+answers[3] = "relational database";
+answers[4] = "Multidimensional database";
+
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. Which one is a standard interactive and programming language for getting information from and updating a database<br></b>
+<blockquote>
+<input type="radio" name="q1" value="dynamic data exchange ">dynamic data exchange <br>
+<input type="radio" name="q1" value="Structured Querry Language">Structured Querry Language<br>
+<input type="radio" name="q1" value="data mining">data mining<br>
+
+</blockquote>
+<p><b>
+2. This tern is used to describe the process of forecasting, or simply discovering patterns in data that can lead to predictions about the future<br></b>
+<blockquote>
+<input type="radio" name="q2" value="customer relationship management">customer relationship management<br>
+<input type="radio" name="q2" value="enterprise risk management">enterprise risk management<br>
+<input type="radio" name="q2" value="Data mining">Data mining<br>
+
+</blockquote>
+<p><b>
+3.In creating a database, this is the process of organizing it into tables in such a way that the results of using the database are always unambigous.<br></b>
+<blockquote>
+<input type="radio" name="q3" value="data modeling">data modeling<br>
+<input type="radio" name="q3" value="normalization">normalization<br>
+<input type="radio" name="q3" value="probability">probability<br>
+</blockquote>
+<p><b>
+4.Which of the following is a collection of data items oranized as a set of formally-described tables from which data can be accessed or reassemblemd in many different ways without having to reorganize the database tables.<br></b>
+<blockquote>
+<input type="radio" name="q4" value="relational database">relational database<br>
+<input type="radio" name="q4" value="file allocation table">file allocation table<br>
+<input type="radio" name="q4" value="splay tree">splay tree<br>
+
+</blockquote>
+<p><b>
+
+
+<p>
+<b>5. This type of database, which can be used to mine data for business trends , dosent require SQL queries, but instead allows a user to ask questions like "how many Aptivas have been sold in Nebraska so far this year?".<br></b>
+<blockquote>
+<input type="radio" name="q5" value="line information database">line information database<br>
+<input type="radio" name="q5" value="High Performance Storage System ">High Performance Storage System <br>
+<input type="radio" name="q5" value="Multidimensional database">Multidimensional database<br>
+
+</blockquote>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

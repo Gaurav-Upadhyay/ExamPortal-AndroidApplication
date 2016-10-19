@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "211050179746",
+    "project_id": "exams-portal"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:211050179746:android:89fa30a366d76f8d",
+        "android_client_info": {
+          "package_name": "com.gaurav.examsportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "211050179746-ushjjk99p9am7oggmdovgt87ndnuqdce.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gaurav.examsportal",
+            "certificate_hash": "EE4A571BB3F5E87905C9C628E678B6AAC92A2FFB"
+          }
+        },
+        {
+          "client_id": "211050179746-n6q7eudsv13m9rp6n8lith8mfviuj8db.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAXJQGGcbngo2_MdbxbyZsMTvj1kLWcgA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

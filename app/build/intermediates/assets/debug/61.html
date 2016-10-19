@@ -1,0 +1,120 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 4;
+var numChoi = 3;
+var answers = new Array(4);
+answers[0] = "Open Databeas Connectivity";
+answers[1] = "data dictionary";
+answers[2] = "DB2";
+answers[3] = "Oracle";
+
+
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1.This is an open standard application programming interface(API) for accessing a database<br></b>
+<blockquote>
+<input type="radio" name="q1" value="Topic map query language">Topic map query language<br>
+<input type="radio" name="q1" value="Open Databeas Connectivity">Open Databeas Connectivity<br>
+<input type="radio" name="q1" value="Open Data-Link Interface">Open Data-Link Interface<br>
+
+</blockquote>
+<p><b>
+2. This is a collection of descriptions about data objects that is createc for the benefit of programmers and others who might need to refer to them.<br></b>
+<blockquote>
+<input type="radio" name="q2" value="data dictionary">data dictionary<br>
+<input type="radio" name="q2" value="stored procedure">stored procedure<br>
+<input type="radio" name="q2" value="Virtual File Allocation table">Virtual File Allocation table<br>
+
+</blockquote>
+<p><b>
+3 This family of products is IBM's cross-platform relational database management system<br></b>
+<blockquote>
+<input type="radio" name="q3" value="DBA">DBA<br>
+<input type="radio" name="q3" value="DB2">DB2<br>
+<input type="radio" name="q3" value="RDF">RDF<br>
+</blockquote>
+<p><b>
+4. In 1977, this company set out to prove that prevailing theory that relationship databases lacked commercial viability, was wrong<br></b>
+<blockquote>
+<input type="radio" name="q4" value="HP">HP<br>
+<input type="radio" name="q4" value="Oracle">Oracle<br>
+<input type="radio" name="q4" value="Sybase">Sybase<br>
+
+</blockquote>
+<p><b>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

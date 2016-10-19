@@ -1,0 +1,129 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 3;
+var answers = new Array(5);
+answers[0] = "Defines the document type";
+answers[1] = "Defines a hyperlink";
+answers[2] = "Defines an abbreviation or an acronym";
+answers[3] = "Defines content aside from the page content";
+answers[4] = "Defines sound content";
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. What does doctype tag do<br></b>
+<blockquote>
+<input type="radio" name="q1" value="Defines a comment">Defines a comment<br>
+<input type="radio" name="q1" value="Defines the document type">Defines the document type<br>
+<input type="radio" name="q1" value="Defines a hyperlink">Defines a hyperlink<br>
+
+</blockquote>
+<p><b>
+2. What does "a" tag do<br></b>
+<blockquote>
+<input type="radio" name="q2" value="Defines a comment">Defines a comment<br>
+<input type="radio" name="q2" value="Defines the document type">Defines the document type<br>
+<input type="radio" name="q2" value="Defines a hyperlink">Defines a hyperlink<br>
+
+</blockquote>
+<p><b>
+3.What does an "abbr" Tag do<br></b>
+<blockquote>
+<input type="radio" name="q3" value="Defines a comment">Defines a comment<br>
+<input type="radio" name="q3" value="Defines an abbreviation or an acronym">Defines an abbreviation or an acronym<br>
+<input type="radio" name="q3" value="Defines an article">Defines an article<br>
+</blockquote>
+<p><b>
+4. What does an "aside" tag do?<br></b>
+<blockquote>
+<input type="radio" name="q4" value="Defines an area inside an image-map">Defines an area inside an image-map<br>
+<input type="radio" name="q4" value="Defines content aside from the page content">Defines content aside from the page content<br>
+<input type="radio" name="q4" value="Defines contact information for the author">Defines contact information for the author<br>
+
+</blockquote>
+<p><b>
+
+
+<p>
+<b>5.What does a "sound" tag do<br></b>
+<blockquote>
+<input type="radio" name="q6" value="Defines an area inside an image-map">Defines an area inside an image-map<br>
+<input type="radio" name="q6" value="Defines sound content">Defines sound content<br>
+<input type="radio" name="q6" value="Defines bold text">Defines bold text<br>
+
+</blockquote>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

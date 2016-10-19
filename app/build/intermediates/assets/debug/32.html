@@ -1,0 +1,141 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 7;
+var numChoi = 2;
+var answers = new Array(5);
+answers[0] = "PHP 5 presents many additional OOP (Object Oriented Programming) features.";
+answers[1] = "PHP includes only single inheritance, it means that a class can be extended from only one single class using the keyword ‘extended’.";
+answers[2] = "‘final’ is introduced in PHP5. Final class means that this class cannot be extended and a final method cannot be overrided.";
+answers[3] = "We use the operator ‘==’ to test is two object are instanced from the same class and have same attributes and equal values. We can test if two object are refering to the same instance of the same class by the use of the identity operator ‘===’.";
+answers[4] = "It is possible to generate HTML through PHP scripts, and it is possible to pass informations from HTML to PHP.";
+answers[5] = "If we would like to pass values througn a form or an URL then we need to encode and to decode them using htmlspecialchars() and urlencode().";
+answers[6] = "PHP and Javascript cannot directly interacts since PHP is a server side language and Javascript is a client side language. However we can exchange variables since PHP is able to generate Javascript code to be executed by the browser and it is possible to pass specific variables back to PHP via the URL.";
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. What is the main difference between PHP 4 and PHP 5?<br></b>
+<blockquote>
+<input type="radio" name="q1" value="a">Tables added<br>
+<input type="radio" name="q1" value="PHP 5 presents many additional OOP (Object Oriented Programming) features.">PHP 5 presents many additional OOP (Object Oriented Programming) features.<br>
+</blockquote>
+<p><b>
+2. Is multiple inheritance supported in PHP?<br></b>
+<blockquote>
+<input type="radio" name="q2" value="PHP includes only single inheritance, it means that a class can be extended from only one single class using the keyword ‘extended’.">No<br>
+<input type="radio" name="q2" value="Microsoft">Yes<br>
+
+</blockquote>
+<p><b>
+3. What is the meaning of a final class and a final method?<br></b>
+<blockquote>
+<input type="radio" name="q3" value="Final class means that this class cannot be extended and a final method cannot be overrided.">Final class means that this class cannot be extended and a final method cannot be overrided.<br>
+<input type="radio" name="q3" value="h1">Final class means that only this class can be extended <br>
+</blockquote>
+<p><b>
+4. How comparison of objects is done in PHP5?<br></b>
+<blockquote>
+<input type="radio" name="q4" value="We use the operator ‘==’ to test is two object are instanced from the same class and have same attributes and equal values. We can test if two object are refering to the same instance of the same class by the use of the identity operator ‘===’.">We use the operator ‘==’ to test is two object are instanced from the same class and have same attributes and equal values. We can test if two object are refering to the same instance of the same class by the use of the identity operator ‘===’.<br>
+<input type="radio" name="q4" value="br">We use the operator ‘=’ to test is two object are instanced from the same class and have same attributes and equal values. We can test if two object are refering to the same instance of the same class by the use of the identity operator ‘==’.<br>
+</blockquote>
+<p><b>
+
+
+<p>
+<b>5. How can PHP and HTML interact?<br></b>
+<blockquote>
+<input type="radio" name="q6" value="It is possible to generate HTML through PHP scripts, and it is possible to pass informations from HTML to PHP.">It is possible to generate HTML through PHP scripts, and it is possible to pass informations from HTML to PHP.<br>
+<input type="radio" name="q6" value="i">It is impossible<br>
+
+
+</blockquote>
+
+<p>
+<b>6. What type of operation is needed when passing values through a form or an URL?<br></b>
+<blockquote>
+<input type="radio" name="q7" value="important">If we would like to pass values througn a form or an URL then we need to encode and to decode them using javaspecialchars() and resencode().<br>
+<input type="radio" name="q7" value="If we would like to pass values througn a form or an URL then we need to encode and to decode them using htmlspecialchars() and urlencode().">If we would like to pass values througn a form or an URL then we need to encode and to decode them using htmlspecialchars() and urlencode().<br>
+
+
+</blockquote>
+<p>
+<b>7. Choose the correct HTML element to define important text<br></b>
+<blockquote>
+<input type="radio" name="q8" value="important">They dont.<br>
+<input type="radio" name="q8" value="PHP and Javascript cannot directly interacts since PHP is a server side language and Javascript is a client side language. However we can exchange variables since PHP is able to generate Javascript code to be executed by the browser and it is possible to pass specific variables back to PHP via the URL.">PHP and Javascript cannot directly interacts since PHP is a server side language and Javascript is a client side language. However we can exchange variables since PHP is able to generate Javascript code to be executed by the browser and it is possible to pass specific variables back to PHP via the URL.<br>
+
+</blockquote>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

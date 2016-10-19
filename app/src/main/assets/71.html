@@ -1,0 +1,125 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 2;
+var answers = new Array(5);
+answers[0] = "follow a straight-line path";
+answers[1] = "about 30m/s";
+answers[2] = "exactly below the midpoint of the ceiling";
+answers[3] = "evening";
+answers[4] = "distance and time";
+
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. Whirl a rock at the end of a string on an ice-covered pond and it follows a circular path. If the string breaks the tendency of the rock is to<br></b>
+<blockquote>
+<input type="radio" name="q1" value="continue to follow a circular path">continue to follow a circular path<br>
+<input type="radio" name="q1" value="follow a straight-line path">follow a straight-line path<br>
+</blockquote>
+<p><b>
+2.A package falls off a truck that is moving at 30m/s Neglecting air resistance, the horizontal speed of the package just before it hits the ground is<br></b>
+<blockquote>
+<input type="radio" name="q2" value="Zero">Zero<br>
+<input type="radio" name="q2" value="about 30m/s">about 30m/s<br>
+
+</blockquote>
+<p><b>
+3. Choose the correct HTML element for the largest heading:<br></b>
+<blockquote>
+<input type="radio" name="q3" value="ahead of the midpoint of the ceiling.">ahead of the midpoint of the ceiling.<br>
+<input type="radio" name="q3" value="exactly below the midpoint of the ceiling">exactly below the midpoint of the ceiling<br>
+
+</blockquote>
+<p><b>
+4. According to Newton's law of inertia, the result of walking much of the day is similar to tightening the head of a hammer when its handle hits a solid surface so that we are actually a little bit shorter in the<br></b>
+<blockquote>
+<input type="radio" name="q4" value="morning">morning<br>
+<input type="radio" name="q4" value="evening">evening<br>
+</blockquote>
+<p><b>
+
+
+<p>
+<b>5.The two measurements necessary for calculating average speed are<br></b>
+<blockquote>
+<input type="radio" name="q5" value="distance and time">distance and time<br>
+<input type="radio" name="q5" value="accelaration and time">accelaration and time<br>
+
+
+</blockquote>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

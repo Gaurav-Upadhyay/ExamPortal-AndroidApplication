@@ -1,0 +1,120 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 2;
+var answers = new Array(10);
+answers[0] = "Hydrogen";
+answers[1] = "A nucleus";
+answers[2] = "True";
+answers[3] = "Nitrogen (around 78%)";
+answers[4] = "False";
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. What is the first element on the periodic table?<br></b>
+<blockquote>
+<input type="radio" name="q1" value="Hydrogen">Hydrogen<br>
+<input type="radio" name="q1" value="Oxygen">Oxygen<br>
+
+</blockquote>
+<p><b>
+2. What is the centre of an atom called?<br></b>
+<blockquote>
+<input type="radio" name="q2" value="A nucleus">A nucleus<br>
+<input type="radio" name="q2" value="An atom">An atom<br>
+
+</blockquote>
+<p><b>
+3. True or false? Acids have a pH level below 7.<br></b>
+<blockquote>
+<input type="radio" name="q3" value="True"> True<br>
+<input type="radio" name="q3" value="False">False<br>
+
+</blockquote>
+<p><b>
+4. What is the main gas found in the air we breathe?<br></b>
+<blockquote>
+<input type="radio" name="q4" value="Nitrogen (around 78%)">Nitrogen (around 78%)<br>
+<input type="radio" name="q4" value="Hydrogen">Hydrogen<br>
+</blockquote>
+<p><b>
+5. True or false? An electron carries a positive charge.<br></b>
+<blockquote>
+<input type="radio" name="q5" value="True">True<br>
+<input type="radio" name="q5" value="False">False<br>
+</blockquote>
+<p><b>
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

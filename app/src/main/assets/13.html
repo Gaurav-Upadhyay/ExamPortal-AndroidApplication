@@ -1,0 +1,129 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 3;
+var answers = new Array(5);
+answers[0] = "frame";
+answers[1] = "bgcolor=";
+answers[2] = "Both of the above";
+answers[3] = "ol";
+answers[4] = "link +anchor tag";
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. Which Tag is used to define a frame(within tags)<br></b>
+<blockquote>
+<input type="radio" name="q1" value="frame"> frame<br>
+<input type="radio" name="q1" value="frames">frames<br>
+<input type="radio" name="q1" value="frameset">frameset<br>
+
+</blockquote>
+<p><b>
+2. how do you define table  background color<br></b>
+<blockquote>
+<input type="radio" name="q2" value="bgcolor=">bgcolor=<br>
+<input type="radio" name="q2" value="background-color=">background-color=<br>
+<input type="radio" name="q2" value="Background=">Background=<br>
+
+</blockquote>
+<p><b>
+3.Why use ALT Tag<br></b>
+<blockquote>
+<input type="radio" name="q3" value="Text appears when moving mouse over it">Text appears when moving mouse over it<br>
+<input type="radio" name="q3" value="If image is not loaded, text is shown">If image is not loaded, text is shown<br>
+<input type="radio" name="q3" value="Both of the above">Both of the above<br>
+</blockquote>
+<p><b>
+4. Which tag is used to make a numbered list<br></b>
+<blockquote>
+<input type="radio" name="q4" value="ol">ol<br>
+<input type="radio" name="q4" value="br">br<br>
+<input type="radio" name="q4" value="break">break<br>
+
+</blockquote>
+<p><b>
+
+
+<p>
+<b>5.How do you link within a page<br></b>
+<blockquote>
+<input type="radio" name="q6" value="anchor +link tag">anchor +link tag<br>
+<input type="radio" name="q6" value="anchor +anchor tag">anchor +anchor tag<br>
+<input type="radio" name="q6" value="link +anchor tag">link +anchor tag<br>
+
+</blockquote>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 4;
+var answers = new Array(5);
+answers[0] = "public static void main(String[] args)";
+answers[1] = "False";
+answers[2] = "null";
+answers[3] = "Variables, methods and constructors which are declared protected in the superclass can be accessed only by its child class.";
+answers[4] = "It refers to the ability to make a class abstract in OOP.";
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. What is correct syntax for main method of a java class?<br></b>
+<blockquote>
+<input type="radio" name="q1" value="public static int main(String[] args)">public static int main(String[] args)<br>
+<input type="radio" name="q1" value="public int main(String[] args)">public int main(String[] args)<br>
+<input type="radio" name="q1" value="public static void main(String[] args)">public static void main(String[] args)<br>
+<input type="radio" name="q1" value="None of the above.">None of the above.<br>
+</blockquote>
+<p><b>
+2.Can we have two public classes in one java file?<br></b>
+<blockquote>
+<input type="radio" name="q2" value="True">True<br>
+<input type="radio" name="q2" value="False">False<br>
+<input type="radio" name="q2" value="Depends on software manufacturer">Depends on software manufacturar<br>
+<input type="radio" name="q2" value="d">Yes, but not recommended<br>
+</blockquote>
+<p><b>
+3.What is the default value of String variable?<br></b>
+<blockquote>
+<input type="radio" name="q3" value="0">0<br>
+<input type="radio" name="q3" value="blank">blank<br>
+<input type="radio" name="q3" value="null">null<br>
+<input type="radio" name="q3" value="garbage value">garbage value<br>
+</blockquote>
+<p><b>
+4.  Which of the following is true about protected access modifier?<br></b>
+<blockquote>
+<input type="radio" name="q4" value="Variables, methods and constructors which are declared protected can be accessed by any class.">Variables, methods and constructors which are declared protected can be accessed by any class.<br>
+<input type="radio" name="q4" value="Variables, methods and constructors which are declared protected can be accessed by any class lying in same package.">Variables, methods and constructors which are declared protected can be accessed by any class lying in same package.<br>
+<input type="radio" name="q4" value="Variables, methods and constructors which are declared protected in the superclass can be accessed only by its child class.">Variables, methods and constructors which are declared protected in the superclass can be accessed only by its child class.<br>
+<input type="radio" name="q4" value="None of the above.">None of the above.<br>
+</blockquote>
+<p><b>
+5. What is Abstraction?<br></b>
+<blockquote>
+<input type="radio" name="q5" value="Abstraction is a technique to define different methods of same type.">Abstraction is a technique to define different methods of same type.<br>
+<input type="radio" name="q5" value="Abstraction is the ability of an object to take on many forms.">Abstraction is the ability of an object to take on many forms.<br>
+<input type="radio" name="q5" value="It refers to the ability to make a class abstract in OOP.">It refers to the ability to make a class abstract in OOP.<br>
+<input type="radio" name="q5" value="None of the above.">None of the above.<br>
+</blockquote>
+<p><b>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

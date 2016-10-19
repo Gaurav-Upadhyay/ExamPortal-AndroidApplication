@@ -1,0 +1,126 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 4;
+var answers = new Array(5);
+answers[0] = "True";
+answers[1] = "Dynamic Binding.";
+answers[2] = "Thread returns to the waiting state.";
+answers[3] = "True.";
+answers[4] = "StringBuffer";
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. Can be constructor be made private?<br></b>
+<blockquote>
+<input type="radio" name="q1" value="False.">False.<br>
+<input type="radio" name="q1" value="True">True<br>
+<input type="radio" name="q1" value="At">At timesCohen<br>
+<input type="radio" name="q1" value="bat">Both<br>
+</blockquote>
+<p><b>
+2. Method Overriding is an example of<br></b>
+<blockquote>
+<input type="radio" name="q2" value="Static Binding.">Static Binding.<br>
+<input type="radio" name="q2" value="Dynamic Binding.">Dynamic Binding.<br>
+<input type="radio" name="q2" value="Both of the above.">Both of the above.<br>
+<input type="radio" name="q2" value="None of the above.">None of the above.<br>
+</blockquote>
+<p><b>
+3. What happens when thread's sleep() method is called?<br></b>
+<blockquote>
+<input type="radio" name="q3" value="Thread returns to the ready state.">Thread returns to the ready state.<br>
+<input type="radio" name="q3" value="Thread returns to the waiting state.">Thread returns to the waiting state.<br>
+<input type="radio" name="q3" value="Thread starts running.">Thread starts running.<br>
+<input type="radio" name="q3" value="None of the above.">None of the above.<br>
+</blockquote>
+<p><b>
+4. Deletion is faster in LinkedList than ArrayList.<br></b>
+<blockquote>
+<input type="radio" name="q4" value="True.">True.<br>
+<input type="radio" name="q4" value="False.">False.<br>
+<input type="radio" name="q4" value="Depends on Processor">Depends on Processor<br>
+<input type="radio" name="q4" value="Non-Comparable">Non-Comparable<br>
+</blockquote>
+<p><b>
+5. Which of the following is a thread safe?<br></b>
+<blockquote>
+<input type="radio" name="q5" value="StringBuilder">StringBuilder<br>
+<input type="radio" name="q5" value="StringBuffer">StringBuffer<br>
+<input type="radio" name="q5" value="Both of the above">Both of the above<br>
+<input type="radio" name="q5" value="none of the above">none of the above<br>
+</blockquote>
+<p><b>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

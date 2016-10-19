@@ -1,0 +1,137 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 3;
+var answers = new Array(5);
+answers[0] = "(x - 2)^2 + (y - 1)^2 = 169";
+answers[1] = "1";
+answers[2] = "(48, 55, 73)";
+answers[3] = "2^11 - 1";
+answers[4] = "i";
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1.A circle has center (2, 1) and the point (14, 6) lies on the circumference of the circle.
+What is the equation of the circle in Standard Form?
+<br></b>
+<blockquote>
+<input type="radio" name="q1" value="(x - 1)^2 + (y - 2)^2 = 169">(x - 1)^2 + (y - 2)^2 = 169<br>
+<input type="radio" name="q1" value="(x - 2)^2 + (y - 1)^2 = 169">(x - 2)^2 + (y - 1)^2 = 169<br>
+<input type="radio" name="q1" value="(x - 1)^2 - (y - 2)^2 = 169">(x - 1)^2 - (y - 2)^2 = 169<br>
+
+</blockquote>
+<p><b>
+2. Triple Primes are three consecutive prime numbers that differ by 2 (successive odd numbers that are all prime numbers). 
+
+How many triple prime numbers are there?
+<br></b>
+<blockquote>
+<input type="radio" name="q2" value="1">1<br>
+<input type="radio" name="q2" value="2">2<br>
+<input type="radio" name="q2" value="3">3<br>
+
+</blockquote>
+<p><b>
+3. Which Pythagorean triple is generated when m = 3 and n = 8?
+<br></b>
+<blockquote>
+<input type="radio" name="q3" value="(48, 55, 73)">(48, 55, 73)<br>
+<input type="radio" name="q3" value="(11, 60, 61)">(11, 60, 61)<br>
+<input type="radio" name="q3" value="(14, 48, 50)">(14, 48, 50)<br>
+</blockquote>
+<p><b>
+4. Which of the following is NOT a Mersenne Prime?
+<br></b>
+<blockquote>
+<input type="radio" name="q4" value="2^11 + 1">2^11 + 1<br>
+<input type="radio" name="q4" value="2^11 - 1">2^11 - 1<br>
+<input type="radio" name="q4" value="2^13 - 1">2^13 - 1<br>
+
+</blockquote>
+<p><b>
+
+
+<p>
+<b>5.Which one of the following numbers is algebraic?
+<br></b>
+<blockquote>
+<input type="radio" name="q6" value="e">e<br>
+<input type="radio" name="q6" value="i">i<br>
+<input type="radio" name="q6" value="3i">3i<br>
+
+</blockquote>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>

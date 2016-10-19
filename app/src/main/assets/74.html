@@ -1,0 +1,126 @@
+<!Doctype>
+<html>
+<head> 
+<Title> Test 1</Title>
+
+<style>
+p{
+    font-family: "Times New Roman", Times, serif;
+}
+
+input[type=button], [type=reset] {
+    background-color: white;
+    
+    color: black;
+    border: 2px solid 	#000000;
+    
+    padding: 4px 16px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+}
+</style>
+
+<script>
+var numQues = 5;
+var numChoi = 2;
+var answers = new Array(5);
+answers[0] = "Earth gravitation";
+answers[1] = "weight of the atmosphere";
+answers[2] = "atmospheric pressure";
+answers[3] = "less its internal pressure";
+answers[4] = "outside the house";
+
+
+
+
+function getScore(form) {
+  var score = 0;
+  var currElt;
+  var currSelection;
+  for (i=0; i<numQues; i++) {
+    currElt = i*numChoi;
+    for (j=0; j<numChoi; j++) {
+      currSelection = form.elements[currElt + j];
+      if (currSelection.checked) {
+        if (currSelection.value == answers[i]) {
+          score++;
+          break;
+        }
+      }
+    }
+  }
+
+  score = Math.round(score/numQues*100);
+  form.percentage.value = score + "%";
+  var correctAnswers = "";
+  for (i=1; i<=numQues; i++) {
+    correctAnswers += i + ". " + answers[i-1] + "\r\n";
+  }
+form.solutions.value = correctAnswers;
+}
+
+
+</script>
+</head>
+<body bgcolor="#f2f2f2">
+<center>
+
+<p>
+</center>
+<form name="quiz">
+<p>
+<b>1. Atmospheric molecules do not fly off into outer space because of <br></b>
+<blockquote>
+<input type="radio" name="q1" value="Hyper Text Markup Language">Cohesive forces<br>
+<input type="radio" name="q1" value="Earth gravitation">Earth gravitation<br>
+
+</blockquote>
+<p><b>
+2.Atmospheric pressure is caused by the<br></b>
+<blockquote>
+<input type="radio" name="q2" value="density of the atmosphere">density of the atmosphere<br>
+<input type="radio" name="q2" value="weight of the atmosphere">weight of the atmosphere<br>
+
+</blockquote>
+<p><b>
+3.In drinking soda or water through a straw, we make use of<br></b>
+<blockquote>
+<input type="radio" name="q3" value="h6">capillary actio<br>
+<input type="radio" name="q3" value="atmospheric pressure">atmospheric pressure<br>
+</blockquote>
+<p><b>
+4. The faster a fluid moves, the<br></b>
+<blockquote>
+<input type="radio" name="q4" value="greater">greater its internal pressure<br>
+<input type="radio" name="q4" value="less its internal pressure">less its internal pressure<br>
+
+
+</blockquote>
+<p><b>
+
+
+<p>
+<b>5. If a strong wind from the west breaks a window in the north wall of a house, most of the glass will fall<br></b>
+<blockquote>
+<input type="radio" name="q6" value="upward">upward<br>
+<input type="radio" name="q6" value="outside the house">outside the house<br>
+
+
+</blockquote>
+
+<tub a>
+<center>
+<input type="button" value="Get Result " onClick="getScore(this.form)">
+<input type="reset" value="Clear"><p>
+</center>
+</tub>
+Score = <input type=text size=15 name="percentage"><br><br>
+
+Correct answers:<br></font>
+<textarea name="solutions" wrap="virtual" rows="12" cols="25"></textarea>
+</form>
+<p>
+
+</body>
+</html>
